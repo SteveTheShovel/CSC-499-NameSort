@@ -114,6 +114,16 @@ public class NameSorter {
         return true;
     }
     
+    static String[] sortNamesReverse(String[] oldOrder) {
+        oldOrder = sortNames(oldOrder);
+        String[] newOrder = new String[oldOrder.length];
+        
+        for(int i = 0; i < oldOrder.length; i++) {
+            newOrder[i] = oldOrder[oldOrder.length - (i+1)];
+        }
+        return newOrder;
+    }
+    
     public static void main(String[] args) throws Exception{
         Scanner in = new Scanner(System.in);
         System.out.print("Enter path to file to be sorted: ");
@@ -125,7 +135,7 @@ public class NameSorter {
         String[] entries = new String[0];
         entries = extractNames(file);
         
-        entries = sortNames(entries);
+        entries = sortNamesReverse(entries);
         
         
         for(int i = 0; i < entries.length; i++) {
